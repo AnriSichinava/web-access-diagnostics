@@ -1,0 +1,15 @@
+# Copy to proxies.yaml and point at proxy nodes you actually control
+# (e.g. small VMs you run yourself in different regions). proxies.yaml
+# is gitignored - never commit real proxy hosts/credentials.
+proxies:
+  - label: eu-west
+    host: 203.0.113.10
+    port: 3128
+    scheme: http
+    region: eu-west
+
+  - label: us-east
+    host: 203.0.113.20
+    port: 3128
+    scheme: http
+    region: us-east

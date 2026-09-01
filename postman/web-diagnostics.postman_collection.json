@@ -1,0 +1,63 @@
+{
+  "info": {
+    "name": "Web Access & API Troubleshooting Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://127.0.0.1:8000" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    },
+    {
+      "name": "List Proxies",
+      "request": { "method": "GET", "url": "{{baseUrl}}/proxies" }
+    },
+    {
+      "name": "Diagnose (direct only)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/diagnose",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"https://httpbin.org/get\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Diagnose (direct vs proxy)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/diagnose",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"https://httpbin.org/get\",\n  \"proxy\": \"eu-west\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Diagnose (redirect chain, no follow)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/diagnose",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"url\": \"https://httpbin.org/redirect/3\",\n  \"follow_redirects\": false\n}"
+        }
+      }
+    },
+    {
+      "name": "History (recent)",
+      "request": { "method": "GET", "url": "{{baseUrl}}/history?limit=20" }
+    },
+    {
+      "name": "History (by correlation_id)",
+      "request": { "method": "GET", "url": "{{baseUrl}}/history/REPLACE_WITH_CORRELATION_ID" }
+    }
+  ]
+}
