@@ -5,3 +5,5 @@ logs/*.log
 diagnostics.db
 proxies.yaml
 .DS_Store
+design/
+.pytest_cache/
