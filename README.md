@@ -123,3 +123,7 @@ postman/               Postman collection
 examples/              cURL examples
 tests/                 Unit tests for classification logic
 ```
+
+## License
+
+MIT - see [LICENSE](LICENSE).
